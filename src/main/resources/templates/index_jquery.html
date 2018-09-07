@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta name="viewport"
+	content="initial-scale=1, user-scalable=0, minimal-ui" charset="UTF-8">
+<title>加载顶部、底部</title>
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="iconfont/iconfont.css">
+<link rel="stylesheet" href="css/compoment.css">
+<style>
+.opacity {
+	-webkit-animation: opacity 0.3s linear;
+	animation: opacity 0.3s linear;
+}
+
+@
+-webkit-keyframes opacity { 0% {
+	opacity: 0;
+}
+
+100%
+{
+opacity
+
+
+
+
+
+
+
+
+:
+
+
+
+
+ 
+
+
+
+
+1;
+}
+}
+@
+keyframes opacity { 0% {
+	opacity: 0;
+}
+
+100%
+{
+opacity
+
+
+
+
+
+
+
+
+:
+
+
+
+
+ 
+
+
+
+
+1;
+}
+}
+.dropload-up {
+	text-align: center;
+	margin-top: 100px;
+}
+
+.dropload-down {
+	text-align: center;
+	margin-bottom: 100px;
+}
+</style>
+
+</head>
+
+<body class="index" cz-shortcut-listen="true">
+	<div class="index-top">
+		<div class="index-top__header fn__flex">
+			<a href="https://hacpai.com" class="index-top__logo"> <svg>
+						<use xlink:href="#iconLogo"></use>
+					</svg>
+			</a>
+			<form class="fn__flex-1" action="https://hacpai.com/search">
+				<input placeholder="Search HacPai" type="text" name="key"
+					id="algoliaSearch" value=""> <input type="submit"
+					class="fn__none" value="">
+			</form>
+			<a href="https://hacpai.com/pre-post" class="fn__flex-inline"> <svg>
+						<use xlink:href="#iconPlus"></use>
+					</svg> <span>&nbsp;发帖</span>
+			</a>
+		</div>
+		<div class="index-top__nav">
+			<a href="https://hacpai.com/recent">最新</a> <a
+				href="https://hacpai.com/domain/play">领域</a> <a
+				href="https://hacpai.com/qna">问答</a> <a
+				href="https://hacpai.com/watch"> 关注</a> <a
+				href="https://hacpai.com/city/my"> 长沙</a> <a
+				href="https://hacpai.com/chainbook">链书</a>
+		</div>
+	</div>
+	<div class="content" style="margin-top: 68px;">
+		<ul class="lists" id="listbox">
+			<!-- <li class="list__item">
+				<div class="list__meta fn__flex-inline">
+					<a rel="nofollow" class="ft__gray"
+						href="https://hacpai.com/member/88250"> <img class="avatar"
+						src="https://img.hacpai.com/avatar/1353745196354_1515855515308.png?imageView2/1/w/80/h/80/format/jpg/interlace/0/q/100"
+						style="background-image: none; background-color: transparent;">
+						&nbsp;
+					</a> 88250 &nbsp; • &nbsp; <a class="ft__gray"
+						href="https://hacpai.com/article/1535277215816#comments"
+						target="_self"> <span class="ft__level0">6</span> 回帖
+					</a> &nbsp; • &nbsp; <a class="ft__gray"
+						href="https://hacpai.com/article/1535277215816" target="_self">
+						<span class="ft__level3">347</span> 浏览
+					</a>
+				</div>
+				<div class="fn__5"></div>
+				<div class="fn__flex">
+					<div class="fn__flex-1">
+						<h2 class="list__title">
+							<svg>
+        <use xlink:href="#iconPerfect"></use>
+    </svg>
+							<a rel="bookmark" href="https://hacpai.com/article/1535277215816">
+								百度不限速下载器 BND2 技术架构简介 </a>
+						</h2>
+						<div class="fn__5"></div>
+						<div class="fn__flex">
+							<a class="fn__flex-1 list__content"
+								href="https://hacpai.com/article/1535277215816"> BND2 简介
+								BND2 是一款图形界面的百度不限速下载器，支持 64 位 Windows 和 Mac，仅提供给黑客派会员使用。 高速下载原理
+								通过 PCS API 获得文件、下载链接 通过 .. </a>
+						</div>
+					</div>
+				</div>
+				<div>
+					<a rel="tag" class="list__tag" href="https://hacpai.com/tag/BND">BND</a>
+					&nbsp; <a rel="tag" class="list__tag"
+						href="https://hacpai.com/tag/architecture">架构</a> &nbsp; <a
+						rel="tag" class="list__tag" href="https://hacpai.com/tag/electron">Electron</a>
+					&nbsp;
+				</div>
+			</li>
+ -->
+		</ul>
+
+	</div>
+	<div class="index-bottom">
+		<a href="https://hacpai.com"
+			class="index-bottom__item
+         index-bottom__item--current">
+			<svg>
+					<use xlink:href="#iconArticle"></use>
+				</svg> 首页
+		</a> <a href="https://hacpai.com/activities" class="index-bottom__item">
+			<svg>
+					<use xlink:href="#iconCompress"></use>
+				</svg> 发现
+		</a> <a href="https://hacpai.com/notifications"
+			class="index-bottom__item index-bottom__msg" id="indexBottomMsg">
+			<svg>
+					<use xlink:href="#iconBell"></use>
+				</svg> 消息
+		</a> <a href="https://hacpai.com/member/kekesam123"
+			class="index-bottom__item"> <svg>
+					<use xlink:href="#iconUser"></use>
+				</svg> 我的
+		</a>
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/vue-resource.js"></script>
+	<script src="js/dropload/dropload.min.js"></script>
+	<script>
+	
+		//这里的插件代码呢？
+		$(function() {
+			var pageNo = 1;
+			//初始化jquery插件滚动加载数据插件dropload.js
+			//$('.content').dropload({
+			//如果你觉得范围太大就缩小一点，这样就不用拉到最低下。因为老师的课程
+			$('.content')
+					.dropload(
+							{
+								scrollArea : window,//触发他的范围
+								distance : 100,//拉动距离
+								autoLoad : true,//自动加载
+								threshold : 150,
+								domUp : {
+									domClass : 'dropload-up',
+									domRefresh : '<div class="dropload-refresh">↓下拉刷新-自定义内容</div>',
+									domUpdate : '<div class="dropload-update">↑释放更新-自定义内容</div>',
+									domLoad : '<div class="dropload-load"><span class="loading"></span>加载中-自定义内容...</div>'
+								},
+								domDown : {
+									domClass : 'dropload-down',
+									domRefresh : '<div class="dropload-refresh">↑上拉加载更多-自定义内容</div>',
+									domLoad : '<div class="dropload-load"><span class="loading"></span>数据正在来的路上...</div>',
+									domNoData : '<div class="dropload-noData">真棒！加载完毕了</div>'
+								},
+
+								loadUpFn : function(me) {
+									console.log("1--------------》我要刷新....");
+								},
+								//滚动分页
+								loadDownFn : function(me) { //大门
+									me.lock();
+									mkBLog.pageNo ++;
+									mkBLog.loadData(function(flag){
+										me.resetload();
+										me.unlock();
+										
+										// 没有数据的时候
+										//me.noData();
+									});
+				
+								}
+		});
+			});
+			
+			var mkBLog = {
+					pageNo:0,
+					pageSize:10,
+					loadData:function(callback){
+						var promise = $.get("http://localhost:8080/blogs/"+mkBLog.pageNo+"/"+mkBLog.pageSize);
+						promise.done(function(json){
+							console.log(json);
+							var blogs = json.list;
+							if(!blogs){
+								return
+							}
+							var html = "";
+							if(blogs){
+								for(var i=0;i<blogs.length;i++){
+									
+									var blog = blogs[i];
+									html += "<li class='list__item'>"+
+											"				<div class='list__meta fn__flex-inline'>"+
+											"					<a rel='nofollow' class='ft__gray'"+
+											"						href='https://hacpai.com/member/88250'> <img class='avatar'"+
+											"						src='https://img.hacpai.com/avatar/1353745196354_1515855515308.png?imageView2/1/w/80/h/80/format/jpg/interlace/0/q/100'"+
+											"						style='background-image: none; background-color: transparent;'>"+
+											"						&nbsp;"+
+											"					</a> 88250 &nbsp; • &nbsp; <a class='ft__gray'"+
+											"						href='https://hacpai.com/article/1535277215816#comments'"+
+											"						target='_self'> <span class='ft__level0'>6</span> 回帖"+
+											"					</a> &nbsp; • &nbsp; <a class='ft__gray'"+
+											"						href='https://hacpai.com/article/1535277215816' target='_self'>"+
+											"						<span class='ft__level3'>347</span> 浏览"+
+											"					</a>"+
+											"				</div>"+
+											"				<div class='fn__5'></div>"+
+											"				<div class='fn__flex'>"+
+											"					<div class='fn__flex-1'>"+
+											"						<h2 class='list__title'>"+
+											"							<svg>"+
+											"        <use xlink:href='#iconPerfect'></use>"+
+											"    </svg>"+
+											"							<a rel='bookmark' href='https://hacpai.com/article/1535277215816'>"+blog.name+" </a>"+
+											"						</h2>"+
+											"						<div class='fn__5'></div>"+
+											"						<div class='fn__flex'>"+
+											"							<a class='fn__flex-1 list__content'"+
+											"								href='https://hacpai.com/article/1535277215816'>"+blog.name+"</a>"+
+											"						</div>"+
+											"					</div>"+
+											"                  <a href='https://hacpai.com/article/1535277215816'>"+
+											"                                <img src='http://www.itbooking.net/"+blog.img+"' onerror='imgError(this)' width='105' height='100'>"+"</a>"
+											"				</div>"+
+											"				<div>"+
+											"					<a rel='tag' class='list__tag' href='https://hacpai.com/tag/BND'>BND</a>"+
+											"					&nbsp; <a rel='tag' class='list__tag'"+
+											"						href='https://hacpai.com/tag/architecture'>架构</a> &nbsp; <a"+
+											"						rel='tag' class='list__tag' href='https://hacpai.com/tag/electron'>Electron</a>"+
+											"					&nbsp;"+
+											"				</div>"+
+											"			</li>";
+								}
+								$("#listbox").append(html);
+								callback && callback(true);
+							}
+							
+					});
+					}
+					
+			}
+		
+			function loadData(pageNo,pageSize,callback){
+				var promise = $.get("http://localhost:8080/blogs/"+pageNo+"/"+pageSize);
+				promise.done(function(json){
+					console.log(json);
+					var blogs = json.list;
+					if(!blogs){
+						return
+					}
+					var html = "";
+					if(blogs){
+						for(var i=0;i<blogs.length;i++){
+							
+							var blog = blogs[i];
+							html += "<li class='list__item'>"+
+									"				<div class='list__meta fn__flex-inline'>"+
+									"					<a rel='nofollow' class='ft__gray'"+
+									"						href='https://hacpai.com/member/88250'> <img class='avatar'"+
+									"						src='https://img.hacpai.com/avatar/1353745196354_1515855515308.png?imageView2/1/w/80/h/80/format/jpg/interlace/0/q/100'"+
+									"						style='background-image: none; background-color: transparent;'>"+
+									"						&nbsp;"+
+									"					</a> 88250 &nbsp; • &nbsp; <a class='ft__gray'"+
+									"						href='https://hacpai.com/article/1535277215816#comments'"+
+									"						target='_self'> <span class='ft__level0'>6</span> 回帖"+
+									"					</a> &nbsp; • &nbsp; <a class='ft__gray'"+
+									"						href='https://hacpai.com/article/1535277215816' target='_self'>"+
+									"						<span class='ft__level3'>347</span> 浏览"+
+									"					</a>"+
+									"				</div>"+
+									"				<div class='fn__5'></div>"+
+									"				<div class='fn__flex'>"+
+									"					<div class='fn__flex-1'>"+
+									"						<h2 class='list__title'>"+
+									"							<svg>"+
+									"        <use xlink:href='#iconPerfect'></use>"+
+									"    </svg>"+
+									"							<a rel='bookmark' href='https://hacpai.com/article/1535277215816'>"+blog.name+" </a>"+
+									"						</h2>"+
+									"						<div class='fn__5'></div>"+
+									"						<div class='fn__flex'>"+
+									"							<a class='fn__flex-1 list__content'"+
+									"								href='https://hacpai.com/article/1535277215816'>"+blog.name+"</a>"+
+									"						</div>"+
+									"					</div>"+
+									"                  <a href='https://hacpai.com/article/1535277215816'>"+
+									"                                <img src='http://www.itbooking.net/"+blog.img+"' onerror='imgError(this)' width='105' height='100'>"+"</a>"
+									"				</div>"+
+									"				<div>"+
+									"					<a rel='tag' class='list__tag' href='https://hacpai.com/tag/BND'>BND</a>"+
+									"					&nbsp; <a rel='tag' class='list__tag'"+
+									"						href='https://hacpai.com/tag/architecture'>架构</a> &nbsp; <a"+
+									"						rel='tag' class='list__tag' href='https://hacpai.com/tag/electron'>Electron</a>"+
+									"					&nbsp;"+
+									"				</div>"+
+									"			</li>";
+						}
+						$("#listbox").append(html);
+						callback && callback(true);
+					}
+					
+			});
+			}
+			mkBLog.loadData(0,10);
+			
+			function imgError(obj){
+				obj.src = "http://www.itbooking.net/resources/images/noimage.gif";
+			};
+	</script>
+
+</body>
+
+</html>
